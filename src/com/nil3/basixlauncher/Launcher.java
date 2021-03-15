@@ -147,8 +147,8 @@ public final class Launcher extends Activity
 
     static final String EXTRA_SHORTCUT_DUPLICATE = "duplicate";
 
-    static final int SCREEN_COUNT = 5;
-    static final int DEFAULT_SCREEN = 2;
+    static final int SCREEN_COUNT = 2;
+    static final int DEFAULT_SCREEN = 0;
 
     private static final String PREFERENCES = "launcher.preferences";
     // To turn on these properties, type
@@ -3209,6 +3209,13 @@ public final class Launcher extends Activity
 
     private boolean updateGlobalSearchIcon() {
         final View searchButtonContainer = findViewById(R.id.search_button_container);
+        if (searchButtonContainer != null) {
+            searchButtonContainer.setVisibility(View.GONE);
+            searchButtonContainer.setEnabled(false);
+        };
+        return false;
+        /*
+        final View searchButtonContainer = findViewById(R.id.search_button_container);
         final ImageView searchButton = (ImageView) findViewById(R.id.search_button);
         final View voiceButtonContainer = findViewById(R.id.voice_button_container);
         final View voiceButton = findViewById(R.id.voice_button);
@@ -3243,16 +3250,26 @@ public final class Launcher extends Activity
             }
             return false;
         }
+        */
     }
 
     private void updateGlobalSearchIcon(Drawable.ConstantState d) {
+        /*
         final View searchButtonContainer = findViewById(R.id.search_button_container);
         final View searchButton = (ImageView) findViewById(R.id.search_button);
         updateButtonWithDrawable(R.id.search_button, d);
         invalidatePressedFocusedStates(searchButtonContainer, searchButton);
+        */
     }
 
     private boolean updateVoiceSearchIcon(boolean searchVisible) {
+        final View voiceButtonContainer = findViewById(R.id.voice_button_container);
+        if (voiceButtonContainer != null) {
+            voiceButtonContainer.setVisibility(View.GONE);
+            voiceButtonContainer.setEnabled(false);
+        };
+        return false;
+        /*
         final View voiceButtonContainer = findViewById(R.id.voice_button_container);
         final View voiceButton = findViewById(R.id.voice_button);
         final View voiceButtonProxy = findViewById(R.id.voice_button_proxy);
@@ -3301,19 +3318,28 @@ public final class Launcher extends Activity
             }
             return false;
         }
+        */
     }
 
     private void updateVoiceSearchIcon(Drawable.ConstantState d) {
+        /*
         final View voiceButtonContainer = findViewById(R.id.voice_button_container);
         final View voiceButton = findViewById(R.id.voice_button);
         updateButtonWithDrawable(R.id.voice_button, d);
         invalidatePressedFocusedStates(voiceButtonContainer, voiceButton);
+        */
     }
 
     /**
      * Sets the app market icon
      */
     private void updateAppMarketIcon() {
+        final View marketButton = findViewById(R.id.market_button);
+        if (marketButton != null) {
+            marketButton.setVisibility(View.GONE);
+            marketButton.setEnabled(false);
+        };
+        /*
         final View marketButton = findViewById(R.id.market_button);
         Intent intent = new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_APP_MARKET);
         // Find the app market activity by resolving an intent.
@@ -3332,9 +3358,11 @@ public final class Launcher extends Activity
             marketButton.setVisibility(View.GONE);
             marketButton.setEnabled(false);
         }
+        */
     }
 
     private void updateAppMarketIcon(Drawable.ConstantState d) {
+        /*
         // Ensure that the new drawable we are creating has the approprate toolbar icon bounds
         Resources r = getResources();
         Drawable marketIconDrawable = d.newDrawable(r);
@@ -3343,6 +3371,7 @@ public final class Launcher extends Activity
         marketIconDrawable.setBounds(0, 0, w, h);
 
         updateTextButtonWithDrawable(R.id.market_button, marketIconDrawable);
+        */
     }
 
     @Override
