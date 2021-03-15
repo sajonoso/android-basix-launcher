@@ -95,8 +95,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.common.Search;
-import com.android.launcher.R;
+// import com.android.common.Search;
+import com.android.launcher2.R;
 import com.android.launcher2.DropTarget.DragObject;
 
 import java.io.BufferedReader;
@@ -1667,6 +1667,8 @@ public final class Launcher extends Activity
 
         showWorkspace(true);
 
+        return;
+/*
         if (initialQuery == null) {
             // Use any text typed in the launcher as the initial query
             initialQuery = getTypedText();
@@ -1682,6 +1684,7 @@ public final class Launcher extends Activity
 
         startGlobalSearch(initialQuery, selectInitialQuery,
             appSearchData, sourceBounds);
+*/
     }
 
     /**
