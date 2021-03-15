@@ -1,4 +1,7 @@
+# Ignore generated files
 build/
+Manifest.java
+R.java
 
 # Local folders beginning with _
-_notes/
+_*/
