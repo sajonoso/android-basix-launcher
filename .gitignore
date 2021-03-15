@@ -1,0 +1,4 @@
+build/
+
+# Local folders beginning with _
+_notes/
