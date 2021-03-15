@@ -19,7 +19,7 @@
 -->
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.android.launcher2"
+    package="com.nil3.basixlauncher"
     android:versionCode="1000000"
     android:versionName="1.0.0"
     >
@@ -63,14 +63,14 @@
     <uses-permission android:name="com.android.launcher.permission.WRITE_SETTINGS" />
 
     <application
-        android:name="com.android.launcher2.LauncherApplication"
+        android:name="com.nil3.basixlauncher.LauncherApplication"
         android:label="@string/application_name"
         android:icon="@mipmap/ic_launcher_home"
         android:hardwareAccelerated="true"
         android:largeHeap="@bool/config_largeHeap"
         android:supportsRtl="true">
         <activity
-            android:name="com.android.launcher2.Launcher"
+            android:name="com.nil3.basixlauncher.Launcher"
             android:launchMode="singleTask"
             android:clearTaskOnLaunch="true"
             android:stateNotNeeded="true"
@@ -87,7 +87,7 @@
         </activity>
 
         <activity
-            android:name="com.android.launcher2.WallpaperChooser"
+            android:name="com.nil3.basixlauncher.WallpaperChooser"
             android:theme="@style/Theme.WallpaperPicker"
             android:label="@string/pick_wallpaper"
             android:icon="@mipmap/ic_launcher_wallpaper"
@@ -103,7 +103,7 @@
 
         <!-- Intent received used to prepopulate the default workspace. -->
         <receiver
-            android:name="com.android.launcher2.PreloadReceiver"
+            android:name="com.nil3.basixlauncher.PreloadReceiver"
             android:permission="com.android.launcher.permission.PRELOAD_WORKSPACE">
             <intent-filter>
                 <action android:name="com.android.launcher.action.PRELOAD_WORKSPACE" />
@@ -112,7 +112,7 @@
 
         <!-- Intent received used to install shortcuts from other applications -->
         <receiver
-            android:name="com.android.launcher2.InstallShortcutReceiver"
+            android:name="com.nil3.basixlauncher.InstallShortcutReceiver"
             android:permission="com.android.launcher.permission.INSTALL_SHORTCUT">
             <intent-filter>
                 <action android:name="com.android.launcher.action.INSTALL_SHORTCUT" />
@@ -121,7 +121,7 @@
 
         <!-- Intent received used to uninstall shortcuts from other applications -->
         <receiver
-            android:name="com.android.launcher2.UninstallShortcutReceiver"
+            android:name="com.nil3.basixlauncher.UninstallShortcutReceiver"
             android:permission="com.android.launcher.permission.UNINSTALL_SHORTCUT">
             <intent-filter>
                 <action android:name="com.android.launcher.action.UNINSTALL_SHORTCUT" />
@@ -130,14 +130,14 @@
 
         <!-- New user initialization; set up initial wallpaper -->
         <receiver
-            android:name="com.android.launcher2.UserInitializeReceiver"
+            android:name="com.nil3.basixlauncher.UserInitializeReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.USER_INITIALIZE" />
             </intent-filter>
         </receiver>
 
-        <receiver android:name="com.android.launcher2.PackageChangedReceiver" >
+        <receiver android:name="com.nil3.basixlauncher.PackageChangedReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_CHANGED"/>
                 <action android:name="android.intent.action.PACKAGE_REPLACED"/>
@@ -148,8 +148,8 @@
 
         <!-- The settings provider contains Home's data, like the workspace favorites -->
         <provider
-            android:name="com.android.launcher2.LauncherProvider"
-            android:authorities="com.android.launcher2.settings"
+            android:name="com.nil3.basixlauncher.LauncherProvider"
+            android:authorities="com.nil3.basixlauncher.settings"
             android:exported="true"
             android:writePermission="com.android.launcher.permission.WRITE_SETTINGS"
             android:readPermission="com.android.launcher.permission.READ_SETTINGS" />
