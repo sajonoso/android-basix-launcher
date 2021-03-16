@@ -436,6 +436,8 @@ public final class Launcher extends Activity
 
         // On large interfaces, we want the screen to auto-rotate based on the current orientation
         unlockScreenOrientation(true);
+
+        disableIcons();
     }
 
     private String getSystemPropertyFromShell(String propertyName) {
@@ -2088,9 +2090,9 @@ public final class Launcher extends Activity
      * @param v The view that was clicked.
      */
     public void onClickSearchButton(View v) {
-        v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+        // v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 
-        onSearchRequested();
+        // onSearchRequested();
     }
 
     /**
@@ -2099,23 +2101,23 @@ public final class Launcher extends Activity
      * @param v The view that was clicked.
      */
     public void onClickVoiceButton(View v) {
-        v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
+        // v.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 
-        try {
-            final SearchManager searchManager =
-                    (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-            ComponentName activityName = searchManager.getGlobalSearchActivity();
-            Intent intent = new Intent(RecognizerIntent.ACTION_WEB_SEARCH);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            if (activityName != null) {
-                intent.setPackage(activityName.getPackageName());
-            }
-            startActivity(null, intent, "onClickVoiceButton");
-        } catch (ActivityNotFoundException e) {
-            Intent intent = new Intent(RecognizerIntent.ACTION_WEB_SEARCH);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivitySafely(null, intent, "onClickVoiceButton");
-        }
+        // try {
+        //     final SearchManager searchManager =
+        //             (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        //     ComponentName activityName = searchManager.getGlobalSearchActivity();
+        //     Intent intent = new Intent(RecognizerIntent.ACTION_WEB_SEARCH);
+        //     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //     if (activityName != null) {
+        //         intent.setPackage(activityName.getPackageName());
+        //     }
+        //     startActivity(null, intent, "onClickVoiceButton");
+        // } catch (ActivityNotFoundException e) {
+        //     Intent intent = new Intent(RecognizerIntent.ACTION_WEB_SEARCH);
+        //     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        //     startActivitySafely(null, intent, "onClickVoiceButton");
+        // }
     }
 
     /**
@@ -3207,12 +3209,40 @@ public final class Launcher extends Activity
         }
     }
 
-    private boolean updateGlobalSearchIcon() {
+    private void disableIcons() {
         final View searchButtonContainer = findViewById(R.id.search_button_container);
         if (searchButtonContainer != null) {
             searchButtonContainer.setVisibility(View.GONE);
             searchButtonContainer.setEnabled(false);
         };
+
+        final ImageView searchButton = (ImageView) findViewById(R.id.search_button);
+        if (searchButton != null) {
+            searchButton.setVisibility(View.GONE);
+            searchButton.setEnabled(false);
+        };
+
+        final View voiceButtonContainer = findViewById(R.id.voice_button_container);
+        if (voiceButtonContainer != null) {
+            voiceButtonContainer.setVisibility(View.GONE);
+            voiceButtonContainer.setEnabled(false);
+        };
+
+        final View voiceButton = findViewById(R.id.voice_button);
+        if (voiceButton != null) {
+            voiceButton.setVisibility(View.GONE);
+            voiceButton.setEnabled(false);
+        };
+
+        final View marketButton = findViewById(R.id.market_button);
+        if (marketButton != null) {
+            marketButton.setVisibility(View.GONE);
+            marketButton.setEnabled(false);
+        };
+    }
+
+    private boolean updateGlobalSearchIcon() {
+        disableIcons();
         return false;
         /*
         final View searchButtonContainer = findViewById(R.id.search_button_container);
@@ -3254,6 +3284,7 @@ public final class Launcher extends Activity
     }
 
     private void updateGlobalSearchIcon(Drawable.ConstantState d) {
+        disableIcons();
         /*
         final View searchButtonContainer = findViewById(R.id.search_button_container);
         final View searchButton = (ImageView) findViewById(R.id.search_button);
@@ -3263,11 +3294,7 @@ public final class Launcher extends Activity
     }
 
     private boolean updateVoiceSearchIcon(boolean searchVisible) {
-        final View voiceButtonContainer = findViewById(R.id.voice_button_container);
-        if (voiceButtonContainer != null) {
-            voiceButtonContainer.setVisibility(View.GONE);
-            voiceButtonContainer.setEnabled(false);
-        };
+        disableIcons();
         return false;
         /*
         final View voiceButtonContainer = findViewById(R.id.voice_button_container);
@@ -3322,6 +3349,7 @@ public final class Launcher extends Activity
     }
 
     private void updateVoiceSearchIcon(Drawable.ConstantState d) {
+        disableIcons();
         /*
         final View voiceButtonContainer = findViewById(R.id.voice_button_container);
         final View voiceButton = findViewById(R.id.voice_button);
@@ -3334,11 +3362,7 @@ public final class Launcher extends Activity
      * Sets the app market icon
      */
     private void updateAppMarketIcon() {
-        final View marketButton = findViewById(R.id.market_button);
-        if (marketButton != null) {
-            marketButton.setVisibility(View.GONE);
-            marketButton.setEnabled(false);
-        };
+        disableIcons();
         /*
         final View marketButton = findViewById(R.id.market_button);
         Intent intent = new Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_APP_MARKET);
